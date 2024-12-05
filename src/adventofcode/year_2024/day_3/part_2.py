@@ -1,6 +1,6 @@
 from utils import load_data, get_number_sequences, mult_all
 
-if __name__ == "__main__":
+def main():
     input_data = load_data()
 
     split_dont_data = input_data.split("don't()")
@@ -18,3 +18,7 @@ if __name__ == "__main__":
     result = sum(mult_all(get_number_sequences(enabled_part)))
 
     print(result)
+
+
+if __name__ == "__main__":
+    main()

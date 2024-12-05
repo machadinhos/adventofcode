@@ -13,55 +13,58 @@ class Direction(Enum):
     DIAG_LEFT_UP = (1, -1)
     DIAG_LEFT_DOWN = (-1, 1)
 
-    def move(self, x_coord: int, y_coord: int) -> (int, int):
+    def move(self, x: int, y: int) -> (int, int):
         dx, dy = self.value
-        return x_coord + dx, y_coord + dy
+        return x + dx, y + dy
 
     def can_search(
         self,
-        x_coord: int,
-        y_coord: int,
+        x: int,
+        y: int,
         search_len: int,
         line_len: int,
         col_height: int,
     ) -> bool:
         dx, dy = self.value
-        target_x = x_coord + dx * (search_len - 1)
-        target_y = y_coord + dy * (search_len - 1)
+        target_x = x + dx * (search_len - 1)
+        target_y = y + dy * (search_len - 1)
         return 0 <= target_x <= line_len - 1 and 0 <= target_y <= col_height - 1
 
 
 def search_direction(
-    x_coord: int,
-    y_coord: int,
-    direction_movement: Direction,
+    x: int,
+    y: int,
+    direction: Direction,
     searchable: list[str],
     substring: str,
 ) -> bool:
     matches = 1
     while matches < len(substring):
-        x_coord, y_coord = direction_movement.move(x_coord, y_coord)
-        if searchable[y_coord][x_coord] != substring[matches]:
+        x, y = direction.move(x, y)
+        if searchable[y][x] != substring[matches]:
             return False
         matches += 1
     return True
 
-
-if __name__ == "__main__":
+def main():
     input_data = load_data()
 
-    XMAS = "XMAS"
-    XMAS_LEN = len(XMAS)
-    COL_HEIGHT = len(input_data)
-    LINE_LEN = len(input_data[0])
+    xmas = "XMAS"
+    xmas_len = len(xmas)
+    col_height = len(input_data)
+    line_len = len(input_data[0])
 
     xmas_count = 0
-    for y in range(COL_HEIGHT):
-        for x in (match.start() for match in re.finditer(XMAS[0], input_data[y])):
+    for y in range(col_height):
+        for x in (match.start() for match in re.finditer(xmas[0], input_data[y])):
             for direction in Direction:
                 if direction.can_search(
-                    x, y, XMAS_LEN, LINE_LEN, COL_HEIGHT
-                ) and search_direction(x, y, direction, input_data, XMAS):
+                    x, y, xmas_len, line_len, col_height
+                ) and search_direction(x, y, direction, input_data, xmas):
                     xmas_count += 1
 
     print(xmas_count)
+
+
+if __name__ == "__main__":
+    main()

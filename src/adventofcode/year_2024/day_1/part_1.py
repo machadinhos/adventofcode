@@ -1,6 +1,6 @@
 from utils import load_data
 
-if __name__ == "__main__":
+def main():
     left, right = load_data()
 
     left = sorted(left)
@@ -12,3 +12,7 @@ if __name__ == "__main__":
         absolute += abs(i - j)
 
     print(absolute)
+
+
+if __name__ == "__main__":
+    main()

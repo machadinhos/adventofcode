@@ -1,6 +1,6 @@
 from utils import load_data
 
-if __name__ == "__main__":
+def main():
     left, right = load_data()
     amount = 0
 
@@ -8,3 +8,6 @@ if __name__ == "__main__":
         amount += value * right.count(value)
 
     print(amount)
+
+if __name__ == "__main__":
+    main()
