@@ -1,5 +1,6 @@
 from utils import load_data, is_safe_report
 
+
 def main():
     input_data = load_data()
 
@@ -9,6 +10,7 @@ def main():
     )
 
     print(safe_reports)
+
 
 if __name__ == "__main__":
     main()

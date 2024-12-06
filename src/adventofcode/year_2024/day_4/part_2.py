@@ -19,12 +19,11 @@ def is_possible(
         return False
 
 
-def search_x(
-    x: int, y: int, searchable: list[str], substring: str
-) -> bool:
+def search_x(x: int, y: int, searchable: list[str], substring: str) -> bool:
     return is_possible(x, y, searchable, substring, -1, -1) and is_possible(
         x, y, searchable, substring, -1, 1
     )
+
 
 def main():
     input_data = load_data()

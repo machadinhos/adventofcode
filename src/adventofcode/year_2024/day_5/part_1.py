@@ -1,5 +1,6 @@
 from utils import load_data
 
+
 def main():
     rules, pages = load_data()
 
@@ -15,5 +16,6 @@ def main():
 
     print(result)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

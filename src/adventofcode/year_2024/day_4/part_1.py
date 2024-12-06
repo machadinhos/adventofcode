@@ -46,6 +46,7 @@ def search_direction(
         matches += 1
     return True
 
+
 def main():
     input_data = load_data()
 

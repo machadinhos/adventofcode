@@ -1,5 +1,6 @@
 from utils import load_data
 
+
 def main():
     left, right = load_data()
 
