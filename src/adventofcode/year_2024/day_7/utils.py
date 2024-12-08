@@ -4,6 +4,7 @@ from typing import Iterator, Tuple
 from pathlib import Path
 from multiprocessing import Pool
 
+
 def load_data() -> list[(int, list[int])]:
     lines = Path("input_data.txt").read_text().splitlines()
 
@@ -16,11 +17,15 @@ def load_data() -> list[(int, list[int])]:
     return data
 
 
-def generate_combinations[T](length: int, values: tuple[T, ...]) -> Iterator[Tuple[T, ...]]:
+def generate_combinations[T](
+    length: int, values: tuple[T, ...]
+) -> Iterator[Tuple[T, ...]]:
     return product(values, repeat=length)
 
 
-def process_input_data(data: tuple[int, list[int]], possible_operations: tuple[Callable, ...]) -> int:
+def process_input_data(
+    data: tuple[int, list[int]], possible_operations: tuple[Callable, ...]
+) -> int:
     result, nums = data
     for operation_group in generate_combinations(len(nums) - 1, possible_operations):
         current_value = nums[0]
@@ -31,10 +36,16 @@ def process_input_data(data: tuple[int, list[int]], possible_operations: tuple[C
     return 0
 
 
-def calculate_result(input_data: list[tuple[int, list[int]]], possible_operations: tuple[Callable, ...], multi_process: bool = False) -> int:
+def calculate_result(
+    input_data: list[tuple[int, list[int]]],
+    possible_operations: tuple[Callable, ...],
+    multi_process: bool = False,
+) -> int:
     if multi_process:
         with Pool() as pool:
-            results = pool.starmap(process_input_data, [(data, possible_operations) for data in input_data])
+            results = pool.starmap(
+                process_input_data, [(data, possible_operations) for data in input_data]
+            )
     else:
         results = [process_input_data(data, possible_operations) for data in input_data]
 
