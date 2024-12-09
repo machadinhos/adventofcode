@@ -1,8 +1,9 @@
 from multiprocessing import Pool, cpu_count
+
 from utils import (
-    load_data,
     calculate_visited,
     find_initial_guard_position,
+    load_data,
 )
 
 
@@ -21,11 +22,7 @@ def main():
     initial_position = find_initial_guard_position(input_data)
     all_guard_positions = calculate_visited(input_data, initial_position)[1]
 
-    args = [
-        (x, y, input_data, initial_position)
-        for x, y in all_guard_positions
-        if (x, y) != initial_position
-    ]
+    args = [(x, y, input_data, initial_position) for x, y in all_guard_positions if (x, y) != initial_position]
 
     with Pool(processes=cpu_count()) as pool:
         results = pool.map(process_guard_position, args)

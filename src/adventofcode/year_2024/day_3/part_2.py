@@ -1,4 +1,4 @@
-from utils import load_data, get_number_sequences, mult_all
+from utils import get_number_sequences, load_data, mult_all
 
 
 def main():
@@ -9,10 +9,7 @@ def main():
     enabled_part = "".join(
         (
             split_dont_data[0],
-            *(
-                dont_portion[dont_portion.find("do()") :]
-                for dont_portion in split_dont_data
-            ),
+            *(dont_portion[dont_portion.find("do()") :] for dont_portion in split_dont_data),
         )
     )
 

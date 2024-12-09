@@ -1,4 +1,4 @@
-from utils import load_data, is_safe_report
+from utils import is_safe_report, load_data
 
 
 def main():

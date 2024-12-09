@@ -9,7 +9,7 @@ def main():
 
     absolute = 0
 
-    for i, j in zip(left, right):
+    for i, j in zip(left, right, strict=False):
         absolute += abs(i - j)
 
     print(absolute)

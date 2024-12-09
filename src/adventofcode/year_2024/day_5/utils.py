@@ -1,5 +1,5 @@
-from pathlib import Path
 from collections import defaultdict
+from pathlib import Path
 
 
 def load_data() -> (defaultdict[str : list[str]], list[list[str]]):
@@ -10,6 +10,4 @@ def load_data() -> (defaultdict[str : list[str]], list[list[str]]):
         key, value = pair.split("|")
         rules_dict[key].add(value)
 
-    pages = [[num for num in line.split(",")] for line in pages.splitlines()]
-
-    return rules_dict, pages
+    return rules_dict, [line.split(",") for line in pages.splitlines()]

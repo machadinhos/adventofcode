@@ -3,7 +3,8 @@ from pathlib import Path
 
 
 def load_data() -> (list[int], list[int]):
-    input_data: list[int] = json.load(Path("input_data.json").open("r"))
+    with Path("input_data.json").open("r") as f:
+        input_data: list[int] = json.load(f)
 
     left, right = [], []
 

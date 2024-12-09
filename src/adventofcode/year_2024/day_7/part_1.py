@@ -1,5 +1,6 @@
-from utils import load_data, calculate_result
-from operator import mul, add
+from operator import add, mul
+
+from utils import calculate_result, load_data
 
 
 def main():

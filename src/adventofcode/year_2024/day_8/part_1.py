@@ -1,4 +1,4 @@
-from utils import load_data, get_towers_coords, towers_coords_loop
+from utils import get_towers_coords, load_data, towers_coords_loop
 
 
 def main():

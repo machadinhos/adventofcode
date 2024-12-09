@@ -1,4 +1,4 @@
-from utils import load_data, calculate_visited
+from utils import calculate_visited, load_data
 
 
 def main():

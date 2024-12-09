@@ -22,3 +22,71 @@ allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/adventofcode"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 120
+fix = true
+show-fixes = true
+
+[tool.ruff.lint]
+# https://docs.astral.sh/ruff/rules/
+select = [
+    "RUF",  # Ruff-specific rules
+    "E",  # pycodestyle
+    "W",  # pycodestyle
+    "F",  # Pyflakes
+    "B",  # flake8-bugbear
+    "SIM",  # flake8-simplify
+    "BLE",  # flake8-blind-except
+    "A",  # flake8-builtins
+    "C90",  # mccabe
+    "T10",  # flake8-debugger
+    "ICN",  # flake8-import-conventions
+    "PT",  # flake8-pytest-style
+    "Q",  # flake8-quotes
+    "RSE",  # flake8-raise
+    "RET",  # flake8-return
+    "TCH",  # flake8-type-checking
+    "ARG",  # flake8-unused-arguments
+    "ERA",  # eradicate
+    "UP",  # pyupgrade
+    "I",  # isort
+    "N",  # pep8-naming
+    "PL",  # Pylint
+    "PERF",  # Perflint
+    "FLY",  # flynt
+    "FURB",  # refurb
+    "PGH",  # pygrep-hooks
+    "PTH",  # flake8-use-pathlib
+    "INT",  # flake8-gettext
+    "TID",  # flake8-tidy-imports
+    "SLF",  # flake8-self
+    "PYI",  # flake8-pyi
+    "PIE",  # flake8-pie
+    "INP",  # flake8-no-pep420
+    "LOG",  # flake8-logging
+    "G",  # flake8-logging-format
+    "ISC",  # flake8-implicit-str-concat
+    "C4",  # flake8-comprehensions
+    "COM",  # flake8-commas
+    "S",  # flake8-bandit
+    "NPY",  # NumPy-specific rules
+    "YTT",  # flake8-2020
+    "SLOT",  # flake8-slots
+    "DTZ",  # flake8-datetimez
+    "EXE",  # flake8-executable
+    "DJ",  # flake8-django
+    "ASYNC",  # flake8-async
+    "FA",  # flake8-future-annotations
+    "PD",  # pandas-vet
+]
+ignore = [
+    "D203", # conflicts with other linting rule
+    "D213", # conflicts with other linting rule
+    "COM812", # conflicts with formater
+    "ISC001", # conflicts with formater
+    "UP028",
+    "PLR0913",
+    "PLR2004"
+]

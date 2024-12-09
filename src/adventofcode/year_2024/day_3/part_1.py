@@ -1,4 +1,4 @@
-from utils import load_data, get_number_sequences, mult_all
+from utils import get_number_sequences, load_data, mult_all
 
 
 def main():

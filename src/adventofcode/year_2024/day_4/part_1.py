@@ -1,6 +1,7 @@
-from enum import Enum
-from utils import load_data
 import re
+from enum import Enum
+
+from utils import load_data
 
 
 class Direction(Enum):
@@ -59,9 +60,9 @@ def main():
     for y in range(col_height):
         for x in (match.start() for match in re.finditer(xmas[0], input_data[y])):
             for direction in Direction:
-                if direction.can_search(
-                    x, y, xmas_len, line_len, col_height
-                ) and search_direction(x, y, direction, input_data, xmas):
+                if direction.can_search(x, y, xmas_len, line_len, col_height) and search_direction(
+                    x, y, direction, input_data, xmas
+                ):
                     xmas_count += 1
 
     print(xmas_count)

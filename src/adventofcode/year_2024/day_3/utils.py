@@ -9,9 +9,7 @@ def load_data() -> str:
 
 def get_number_sequences(data) -> Generator[tuple[int, int], None, None]:
     valid_regex = r"mul\(\d+,\d+\)"
-    number_sequences = (
-        match.group()[4:-1].split(",") for match in re.finditer(valid_regex, data)
-    )
+    number_sequences = (match.group()[4:-1].split(",") for match in re.finditer(valid_regex, data))
     return ((int(x), int(y)) for x, y in number_sequences)
 
 

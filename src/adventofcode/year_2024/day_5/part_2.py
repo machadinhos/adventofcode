@@ -3,8 +3,10 @@ from utils import load_data
 
 def is_ordered(page: list[str], rules: dict[str : list[str]]) -> (bool, int):
     cant_appear = set()
-    for index, item_num in enumerate(page):
+    index = -1
+    for item_num in page:
         if item_num in cant_appear:
+            index = page.index(item_num)
             break
         cant_appear.update(rules[item_num])
     else:
@@ -12,9 +14,7 @@ def is_ordered(page: list[str], rules: dict[str : list[str]]) -> (bool, int):
     return False, index
 
 
-def reorder_list(
-    page: list[str], rules: dict[str : list[str]], prob_index: int
-) -> list[str]:
+def reorder_list(page: list[str], rules: dict[str : list[str]], prob_index: int) -> list[str]:
     page[prob_index], page[prob_index - 1] = page[prob_index - 1], page[prob_index]
     ordered, prob_index = is_ordered(page, rules)
     while not ordered:

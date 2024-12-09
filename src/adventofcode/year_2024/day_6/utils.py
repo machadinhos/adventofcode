@@ -1,5 +1,5 @@
-from pathlib import Path
 from itertools import cycle
+from pathlib import Path
 
 
 def load_data() -> list[str]:
@@ -13,10 +13,10 @@ def find_initial_guard_position(input_data: list[str]) -> (int, int):
             if char == guard:
                 return x, y
 
+    raise Exception("No initial guard found")
 
-def calculate_visited(
-    input_data: list[str], initial_pos: (int, int) = None
-) -> (int | None, set[(int, int)]):
+
+def calculate_visited(input_data: list[str], initial_pos: (int, int) = None) -> (int | None, set[(int, int)]):
     if initial_pos is None:
         x, y = find_initial_guard_position(input_data)
     else:
@@ -30,10 +30,7 @@ def calculate_visited(
 
     distinct_positions = {(x, y)}
     positions_after_obstacle = set()
-    while (
-        0 <= (new_x := x + direction_move[0]) < width
-        and 0 <= (new_y := y + direction_move[1]) < height
-    ):
+    while 0 <= (new_x := x + direction_move[0]) < width and 0 <= (new_y := y + direction_move[1]) < height:
         if input_data[new_y][new_x] == "#":
             while input_data[new_y][new_x] == "#":
                 direction_move = next(directions)
