@@ -88,5 +88,6 @@ ignore = [
     "ISC001", # conflicts with formater
     "UP028",
     "PLR0913",
-    "PLR2004"
+    "PLR2004",
+    "RET502"
 ]
